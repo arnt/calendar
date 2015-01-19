@@ -1,0 +1,95 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 0 0 1445 4108
+%%LanguageLevel: 2
+%%Pages: 1
+%%BeginSetup
+%%BeginFeature: *PageSize B0
+<< /PageSize [1460 4127] >> setpagedevice
+%%EndFeature
+%%EndSetup
+%%Page: 1
+
+/mm { 72 mul 25.4 div } bind def
+
+/h 24 def
+/y 60 def
+
+/names /Helvetica findfont 32 scalefont def
+/digits /Helvetica findfont 16 scalefont def
+
+/dot {
+    1 mm 0 rlineto
+    0 1 mm rlineto
+    -1 mm 0 rlineto
+    0 -1 mm rlineto
+} bind def
+
+/box {
+    /tlx 64 dow mul 32 sub mm def
+    /tly y h mul 7 add mm def
+    /dom exch def
+    dom 8 lt {
+	0.4 setgray
+	newpath
+	tlx tly moveto
+	0 2 65 { pop dot 2 mm 0 rmoveto } for
+	fill
+    } if
+    newpath
+    0.7 setgray
+    tlx 64 mm add tly 2 mm sub moveto
+    2 2 h 1 sub { pop dot 0 -2 mm rmoveto } for
+    0 2 64 { pop dot -2 mm 0 rmoveto } for
+    fill
+    newpath
+    0.7 setgray
+    1 dom eq 1 dow lt and { 0.4 setgray } if
+    tlx tly 2 mm sub moveto
+    0 2 h 1 sub { pop dot 0 -2 mm rmoveto } for
+    fill
+    0.4 setgray
+    tlx 4 mm add tly 7 mm sub moveto dom 3 string cvs show
+} bind def
+
+
+/dow 4 def % thursday
+/dom 1 def
+
+
+/month {
+    names setfont
+    dup stringwidth pop
+    0.4 setgray
+    10 mm y dow 1 gt { 1 sub } if h mul 7 add mm 2 copy
+    newpath moveto 10 2 31 { pop dot 2 mm 0 rmoveto } for
+    fill
+    3 -1 roll sub 4 mm sub exch 5.9 mm add exch
+    moveto
+    gsave 90 rotate show grestore
+    digits setfont
+    1 exch 1 exch {
+	box
+	/dow dow 1 add def dow 7 gt { /dow 1 def /y y 1 sub def } if
+    } for
+} bind def
+
+0 setlinewidth
+
+31 (Januar) month
+28 (Februar) month
+31 (Mars) month
+30 (April) month
+31 (Mai) month
+30 (Juni) month
+31 (Juli) month
+31 (August) month
+30 (September) month
+31 (Oktober) month
+30 (November) month
+31 (Desember) month
+31 (Januar) month
+21 (Februar) month
+
+showpage
+
+%%EOF
